@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #000000;
+    --primary: #00ff41; /* Neo-brutalist Green */
+    --secondary: #ff3e3e; /* Harsh Red */
+    --accent: #5e17eb; /* Deep Purple */
+    --border: #000000;
+    --border-width: 4px;
+    --card-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+    --button-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+    --button-shadow-hover: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.5;
+    -webkit-font-smoothing: none; /* Crisper for pixel fonts */
+    font-family: var(--font-vt323), monospace;
+  }
+
+  h1, h2, h3, h4 {
+    text-transform: uppercase;
+    font-weight: 400; /* Most pixel fonts don't have bolds */
+    letter-spacing: -0.02em;
+    font-family: var(--font-press-start), cursive;
+  }
+
+  img.pixelated {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .brutalist-card {
+    border: var(--border-width) solid var(--border);
+    background: var(--background);
+    box-shadow: var(--card-shadow);
+    padding: 1.5rem;
+    transition: transform 0.1s ease;
+  }
+
+  .brutalist-card:hover {
+    transform: translate(-4px, -4px); /* Stepped movement */
+    box-shadow: 12px 12px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .brutalist-button {
+    border: var(--border-width) solid var(--border);
+    background: var(--primary);
+    padding: 0.75rem 1.5rem;
+    font-weight: 400;
+    font-family: var(--font-press-start), cursive;
+    font-size: 0.75rem; /* Press start is huge */
+    text-transform: uppercase;
+    box-shadow: var(--button-shadow);
+    transition: all 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .brutalist-button:hover {
+    transform: translate(4px, 4px);
+    box-shadow: var(--button-shadow-hover);
+  }
+
+  .retro-window {
+    border: var(--border-width) solid var(--border);
+    background: #c0c0c0;
+    box-shadow: var(--card-shadow);
+  }
+
+  .retro-titlebar {
+    background: var(--accent);
+    color: white;
+    padding: 6px 12px;
+    border-bottom: var(--border-width) solid var(--border);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-vt323), monospace;
+    font-size: 1.25rem;
+  }
 }
