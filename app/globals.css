@@ -4,88 +4,94 @@
   :root {
     --background: #ffffff;
     --foreground: #000000;
-    --primary: #00ff41; /* Neo-brutalist Green */
-    --secondary: #ff3e3e; /* Harsh Red */
-    --accent: #5e17eb; /* Deep Purple */
+    --primary: #FF5F1F; /* Retro Orange */
+    --primary-foreground: #000000;
+    --secondary: #e5e7eb;
+    --accent: #FF5F1F;
     --border: #000000;
     --border-width: 4px;
-    --card-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
-    --button-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
-    --button-shadow-hover: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+    --shadow-neo: 4px 4px 0px 0px #000000;
+    --shadow-neo-sm: 2px 2px 0px 0px #000000;
+    --shadow-neo-lg: 8px 8px 0px 0px #000000;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
     line-height: 1.5;
-    -webkit-font-smoothing: none; /* Crisper for pixel fonts */
-    font-family: var(--font-vt323), monospace;
+    font-family: 'Inter', sans-serif;
   }
 
   h1, h2, h3, h4 {
-    text-transform: uppercase;
-    font-weight: 400; /* Most pixel fonts don't have bolds */
+    font-weight: 900;
+    text-transform: none;
     letter-spacing: -0.02em;
-    font-family: var(--font-press-start), cursive;
-  }
-
-  img.pixelated {
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
   }
 }
 
 @layer utilities {
-  .brutalist-card {
+  .neo-brutalism {
     border: var(--border-width) solid var(--border);
-    background: var(--background);
-    box-shadow: var(--card-shadow);
-    padding: 1.5rem;
-    transition: transform 0.1s ease;
+    box-shadow: var(--shadow-neo);
+    transition: all 0.2s ease;
   }
 
-  .brutalist-card:hover {
-    transform: translate(-4px, -4px); /* Stepped movement */
-    box-shadow: 12px 12px 0px 0px rgba(0, 0, 0, 1);
+  .neo-brutalism:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-neo-lg);
   }
 
-  .brutalist-button {
-    border: var(--border-width) solid var(--border);
-    background: var(--primary);
-    padding: 0.75rem 1.5rem;
-    font-weight: 400;
-    font-family: var(--font-press-start), cursive;
-    font-size: 0.75rem; /* Press start is huge */
-    text-transform: uppercase;
-    box-shadow: var(--button-shadow);
-    transition: all 0.1s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  .neo-brutalism:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
   }
 
-  .brutalist-button:hover {
-    transform: translate(4px, 4px);
-    box-shadow: var(--button-shadow-hover);
+  .neo-pill {
+    @apply px-4 py-1 rounded-full border-2 border-black font-bold flex items-center gap-2;
   }
 
-  .retro-window {
-    border: var(--border-width) solid var(--border);
-    background: #c0c0c0;
-    box-shadow: var(--card-shadow);
+  .perspective-grid {
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    perspective: 1000px;
+    transform: rotateX(60deg) scale(2.5);
+    transform-origin: top;
+    position: absolute;
+    top: 0;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    z-index: 0;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent);
   }
 
-  .retro-titlebar {
-    background: var(--accent);
-    color: white;
-    padding: 6px 12px;
-    border-bottom: var(--border-width) solid var(--border);
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--font-vt323), monospace;
-    font-size: 1.25rem;
+  .bg-dot-grid {
+    background-image: radial-gradient(rgba(0,0,0,0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  @keyframes float-delayed {
+    0%, 100% { transform: translateY(0) rotate(-6deg); }
+    50% { transform: translateY(-15px) rotate(-4deg); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float-delayed 7s ease-in-out infinite;
   }
 }
+

@@ -1,212 +1,130 @@
+import Link from "next/link";
 import Image from "next/image";
-import "./retro.css";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#ffffff] selection:bg-[#00ff41] selection:text-black">
-      {/* Retro Effects */}
-      <div className="retro-overlay" />
-      <div className="retro-grain" />
-      <div className="scanline" />
+    <div className="relative min-h-screen bg-white text-black overflow-hidden" suppressHydrationWarning>
+      {/* Perspective Grid Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="perspective-grid opacity-20" />
+      </div>
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b-4 border-black bg-white p-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="border-4 border-black bg-[#00ff41] p-1 shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
-              <Image 
-                src="/icon.png" 
-                alt="StepApp Icon" 
-                width={32} 
-                height={32} 
-                className="pixelated"
-              />
+      <div className="relative z-10 container mx-auto px-4 pt-8 pb-32">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+          {/* Left Content */}
+          <div className="flex-1 text-left space-y-10">
+            {/* Pill Tag */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E2E2E2] border border-black/10 rounded-sm font-bold text-[#666666] text-sm cursor-default">
+              <span>Introducing Neo/SS</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3m5.5-3L11 12.5M15 11l-4.5 4.5M20 4s-7 1-12 12M20 4s1 7-12 12M20 4l-4 4"/></svg>
             </div>
-            <h1 className="text-2xl font-black tracking-tighter">STEPAPP_v1.0</h1>
-          </div>
-          <nav className="hidden md:flex gap-6 font-bold uppercase text-sm lg:text-base">
-            <a href="#features" className="hover:underline decoration-4 underline-offset-4">Features</a>
-            <a href="#about" className="hover:underline decoration-4 underline-offset-4">About</a>
-            <a href="#developer" className="hover:underline decoration-4 underline-offset-4">Developer</a>
-            <a href="#howtotell" className="hover:underline decoration-4 underline-offset-4">Guide</a>
-          </nav>
-        </div>
-      </header>
 
-      <main className="container mx-auto px-4 py-12 md:py-24">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Hero Content */}
-          <div className="flex-1 space-y-8">
-            <div className="brutalist-card bg-[#00ff41] p-8 -rotate-1">
-              <h2 className="text-5xl md:text-7xl font-black leading-none mb-4">
-                WALK. TRACK.<br />
-                <span className="bg-black text-[#00ff41] px-2">CONQUER.</span>
-              </h2>
-              <p className="text-xl md:text-2xl font-black uppercase max-w-lg mb-8">
-                The most aggressive step counter ever made. No ads. No tracking. Just raw movement data.
-              </p>
+            {/* Headline */}
+            <h1 className="text-6xl md:text-[5.5rem] font-black leading-[1.1] tracking-tight">
+              Make your projects <br />
+              <span className="drop-shadow-[6px_6px_0px_#FF5F1F] text-black uppercase">stand out!</span>
+            </h1>
+
+            {/* Sub-text */}
+            <p className="text-xl md:text-2xl font-medium max-w-2xl text-black/60 leading-relaxed tracking-tight">
+              A NeoBrutalism styled React + TailwindCSS UI library for building bold, modern web apps. Perfect for any project using Shadcn/ui.
+            </p>
+
+            {/* CTA Cluster */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+              <Link 
+                href="#" 
+                className="bg-primary text-black px-8 py-4 text-xl font-black border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:translate-x-[4px] active:translate-y-[4px]"
+              >
+                Get Started
+              </Link>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="#" className="brutalist-button text-lg h-20 px-8 bg-[#ff3e3e] text-white">
-                  DOWNLOAD_APK
-                </a>
-                <div className="bg-white border-4 border-black p-4 font-bold flex items-center text-lg">
-                  v1.2.4 | 4.8MB
+              <div className="bg-[#0f1115] text-white px-6 py-4 flex items-center gap-4 border-2 border-black shadow-[4px_4px_0px_0px_#FF5F1F] font-mono text-sm min-w-[320px]">
+                <div className="flex gap-2 text-white/90">
+                  <span className="text-[#89ddff]">npx</span>
+                  <span className="text-[#FF5F1F]">shadcn</span>
+                  <span className="text-[#c3e88d]">add</span>
+                  <span className="text-[#c792ea]">@retroui/button</span>
                 </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="brutalist-card bg-white p-4 text-center">
-                <div className="text-3xl font-black mb-1">50K+</div>
-                <div className="text-xs uppercase opacity-70">ACTIVE_USERS</div>
-              </div>
-              <div className="brutalist-card bg-white p-4 text-center">
-                <div className="text-3xl font-black mb-1">0.0%</div>
-                <div className="text-xs uppercase opacity-70">DATA_HARVEST</div>
+                <button className="ml-auto opacity-50 hover:opacity-100 transition-opacity">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
               </div>
             </div>
           </div>
 
-          {/* App Preview Window */}
-          <div className="flex-1 w-full max-w-md">
-            <div className="retro-window rotate-2">
-              <div className="retro-titlebar">
-                <span>PREVIEW_SCREEN.exe</span>
-                <div className="flex gap-1">
-                  <div className="w-4 h-4 border-2 border-black bg-white" />
-                  <div className="w-4 h-4 border-2 border-black bg-[#ff3e3e]" />
-                </div>
-              </div>
-              <div className="p-2 border-b-4 border-black bg-black">
-                 <Image 
-                    src="/preview.png" 
-                    alt="App Preview" 
+          {/* Right Visuals */}
+          <div className="flex-1 relative h-[600px] w-full max-w-[600px]">
+            {/* Dot Grid Background for Illustration area */}
+            <div className="absolute inset-0 bg-dot-grid opacity-10 pointer-events-none" />
+
+            {/* Retro TV */}
+            <div className="absolute top-[10%] left-[5%] w-[80%] h-auto z-20 animate-float">
+               <div className="relative group perspective-1000">
+                  <Image 
+                    src="/retro-tv.png" 
+                    alt="Retro TV" 
                     width={500} 
-                    height={800} 
-                    className="w-full h-auto grayscale contrast-125 brightness-110"
-                    priority
+                    height={400} 
+                    className="w-full h-auto neo-brutalism scale-100 hover:scale-105 transition-transform duration-500"
                   />
-              </div>
-              <div className="p-4 bg-[#c0c0c0] font-bold text-sm uppercase">
-                Status: System Monitoring Active...
-              </div>
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-[#FF5F1F] border-4 border-black flex items-center justify-center neo-brutalism -rotate-12">
+                    ✨
+                  </div>
+               </div>
             </div>
+
+            {/* Boombox */}
+            <div className="absolute bottom-[5%] right-0 w-[55%] h-auto z-30 animate-float-delayed">
+               <div className="relative group">
+                  <Image 
+                    src="/boombox.png" 
+                    alt="Retro Boombox" 
+                    width={350} 
+                    height={250} 
+                    className="w-full h-auto neo-brutalism -rotate-6 hover:rotate-0 transition-all duration-500"
+                  />
+                  <div className="absolute -bottom-4 -left-4 w-10 h-10 bg-secondary border-4 border-black flex items-center justify-center neo-brutalism rotate-12 text-white">
+                    🎵
+                  </div>
+               </div>
+            </div>
+            
+            {/* Sparkles/Floating shapes */}
+            <div className="absolute top-[40%] right-[10%] text-6xl rotate-12 opacity-50 drop-shadow-[4px_4px_0px_#FF5F1F]">⚡</div>
+            <div className="absolute bottom-[25%] left-[5%] text-4xl -rotate-12 opacity-50 drop-shadow-[4px_4px_0px_#FF5F1F]">🔥</div>
           </div>
         </div>
+      </div>
 
-        {/* Features Section */}
-        <section id="features" className="mt-24">
-          <h3 className="text-4xl font-black mb-12 inline-block bg-black text-white px-4 py-2 skew-x-[-10deg]">
-            CORE_MODULES
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="brutalist-card bg-white hover:bg-[#5e17eb] hover:text-white group">
-              <div className="text-6xl mb-4">01</div>
-              <h4 className="text-2xl font-black mb-2">PRECISION_TRACK</h4>
-              <p className="font-bold opacity-80">Military grade sensors determine your every move. Precision down to the millimeter.</p>
-            </div>
-            <div className="brutalist-card bg-white hover:bg-[#ff3e3e] hover:text-white group">
-              <div className="text-6xl mb-4">02</div>
-              <h4 className="text-2xl font-black mb-2">ZERO_CLOUD</h4>
-              <p className="font-bold opacity-80">Your data never leaves your device. No login, no profile, no bullshit.</p>
-            </div>
-            <div className="brutalist-card bg-[#00ff41] hover:bg-black hover:text-[#00ff41] group">
-              <div className="text-6xl mb-4">03</div>
-              <h4 className="text-2xl font-black mb-2">BATTERY_LIGHT</h4>
-              <p className="font-bold opacity-80">Highly optimized assembly code ensures minimal battery drain during tracking.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Info Section */}
-        <section id="about" className="mt-24 border-t-8 border-black pt-12">
-          <div className="max-w-4xl">
-            <h3 className="text-5xl font-black mb-8 underline decoration-8 underline-offset-8">WHY_STEPAPP?</h3>
-            <div className="space-y-6 text-xl font-bold uppercase leading-relaxed">
-              <p>
-                Founded on the principles of digital sovereignty and raw utility, StepApp was built for those who value privacy and performance.
-              </p>
-              <p className="p-4 border-l-8 border-[#ff3e3e] bg-zinc-100">
-                Traditional "fitness" apps harvest your location, your routines, and your identity.
-                We harvest nothing. We just count steps.
-              </p>
-              <p>
-                Current build: Android 8.0+ supported. Optimized for low-end hardware. No internet connection required after first setup.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Developer Section */}
-        <section id="developer" className="mt-24">
-          <div className="brutalist-card bg-[#5e17eb] text-white p-8 max-w-2xl rotate-1">
-             <div className="flex flex-col md:flex-row gap-8 items-start">
-                <div className="w-32 h-32 border-4 border-white bg-black flex items-center justify-center text-4xl font-black overflow-hidden relative">
-                   <div className="absolute inset-0 bg-[#00ff41] opacity-20" />
-                   DEV_01
-                </div>
-                <div className="flex-1 space-y-4">
-                   <h3 className="text-3xl font-black">DEVELOPER_PROFILE</h3>
-                   <div className="space-y-2 font-bold uppercase">
-                      <div className="flex justify-between border-b border-white/30 py-1">
-                         <span>IDENTIFIER:</span>
-                         <span className="bg-white text-black px-1">ANTIGRAVITY_CORE</span>
-                      </div>
-                      <div className="flex justify-between border-b border-white/30 py-1">
-                         <span>CLASS:</span>
-                         <span>FULL_STACK_ARCHITECT</span>
-                      </div>
-                      <div className="flex justify-between border-b border-white/30 py-1">
-                         <span>MISSION:</span>
-                         <span>NO_BLOAT_SOFTWARE</span>
-                      </div>
-                   </div>
-                   <p className="text-sm opacity-80 mt-4 leading-tight">
-                     "I build tools that respect the user. No tracking, no telemetry, just pure function. StepApp is the first of many decentralized utility modules for the modern era."
-                   </p>
-                </div>
-             </div>
-          </div>
-        </section>
-
-        {/* Guide Section */}
-        <section id="howtotell" className="mt-24 border-t-8 border-black pt-12">
-          <h3 className="text-4xl font-black mb-8">INSTALLATION_LOG</h3>
-          <div className="space-y-4 font-bold">
-            <div className="flex gap-4 items-start">
-              <span className="bg-black text-white px-2">STEP_01</span>
-              <p>ENABLE "UNKNOWN SOURCES" IN YOUR ANDROID SECURITY SETTINGS.</p>
-            </div>
-            <div className="flex gap-4 items-start">
-              <span className="bg-black text-white px-2">STEP_02</span>
-              <p>DOWNLOAD THE APK BY CLICKING THE RED BUTTON ABOVE.</p>
-            </div>
-            <div className="flex gap-4 items-start">
-              <span className="bg-black text-white px-2">STEP_03</span>
-              <p>RUN THE INSTALLER and IGNORE THE "PLAY PROTECT" WARNING (WE ARE NOT VERIFIED ON GOOGLE PLAY).</p>
-            </div>
-            <div className="flex gap-4 items-start text-[#ff3e3e]">
-              <span className="bg-[#ff3e3e] text-white px-2">CRITICAL</span>
-              <p>REBOOT DEVICE TO PERSONALIZE TRACKING SENSORS.</p>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t-4 border-black bg-black text-[#00ff41] py-12 mt-24">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-center md:text-left">
-            <div className="text-3xl font-black mb-2">STEPAPP_CORP</div>
-            <p className="font-mono text-sm opacity-60">© 1994-2026 DIGITAL_RESISTANCE_UNIT</p>
-          </div>
-          <div className="flex gap-4">
-             <div className="brutalist-button bg-white text-black text-xs p-2">SOURCE_CODE</div>
-             <div className="brutalist-button bg-[#ff3e3e] text-white text-xs p-2">ENCRYPTED_COMMS</div>
-          </div>
+      {/* Showcase Grid Section */}
+      <section className="container mx-auto px-4 py-12 border-t-4 border-black">
+        <div className="flex flex-col items-center text-center space-y-6 mb-16">
+          <h2 className="text-5xl font-black">Build bold interfaces.</h2>
+          <p className="text-xl font-bold text-black/60 max-w-2xl">
+            Retroui provides all the components you need to build stunning Neo-Brutalism web applications that stand out from the crowd.
+          </p>
         </div>
-      </footer>
+
+        <div className="grid md:grid-cols-3 gap-8">
+           <div className="bg-white border-4 border-black p-8 neo-brutalism shadow-[8px_8px_0px_0px_#000000] rotate-[-1deg] hover:rotate-0 transition-transform">
+              <span className="text-4xl mb-6 block">🎨</span>
+              <h3 className="text-2xl font-black mb-4">BOLD_COLORS</h3>
+              <p className="font-bold opacity-60">High contrast palettes that make your content pop off the screen.</p>
+           </div>
+           <div className="bg-primary border-4 border-black p-8 neo-brutalism shadow-[8px_8px_0px_0px_#000000] translate-y-4 hover:translate-y-0 transition-transform">
+              <span className="text-4xl mb-6 block">📐</span>
+              <h3 className="text-2xl font-black mb-4">GEOMETRIC_FORMS</h3>
+              <p className="font-black opacity-80">Sharp corners, thick strokes, and unapologetic geometry.</p>
+           </div>
+           <div className="bg-white border-4 border-black p-8 neo-brutalism shadow-[8px_8px_0px_0px_#000000] rotate-[1deg] hover:rotate-0 transition-transform">
+              <span className="text-4xl mb-6 block">🕹️</span>
+              <h3 className="text-2xl font-black mb-4">RETRO_LOGIC</h3>
+              <p className="font-bold opacity-60">Inspired by 80s tech and 90s zine culture. Raw and unfiltered.</p>
+           </div>
+        </div>
+      </section>
     </div>
   );
 }
